@@ -2,7 +2,7 @@
 #topCharts{
   padding-left: 18px;
   padding-right: 18px;
-  <!-- padding-top: 18px; -->
+  /*<!-- padding-top: 18px; -->*/
   padding-bottom: 0px;
   width: 100%;
 }
@@ -81,13 +81,6 @@
 }
 </style>
 
-<!-- Breadcrumbs-->
-<ol class="breadcrumb">
-  <li class="breadcrumb-item">
-    <a href="/">Home</a>
-  </li>
-  <li class="breadcrumb-item active">Dashboard</li>
-</ol>
 <div id="worker-error"></div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -261,29 +254,29 @@
           </div>
         </div>
 
-        <script>
+  <script>
 
-          document.querySelector('main').appendChild(document.createElement('script')).src = '/static/js/dashboard.js';
+  document.querySelector('main').appendChild(document.createElement('script')).src = '/static/js/dashboard.js';
 
-          var _miner = localStorage.vmAddress;
-          var _workerCount = 0;
-          window.statsSource = new EventSource("/api/live_stats");
-          document.querySelector('main').appendChild(document.createElement('script')).src = '/static/js/miner_stats.js';
-          document.querySelector('main').appendChild(document.createElement('script')).src = '/static/js/customViciousWS.js';
+  var _miner = localStorage.vmAddress;
+  var _workerCount = 0;
+  window.statsSource = new EventSource("/api/live_stats");
+  document.querySelector('main').appendChild(document.createElement('script')).src = '/static/js/miner_stats.js';
+  document.querySelector('main').appendChild(document.createElement('script')).src = '/static/js/customViciousWS.js';
 
-          $(document).ready(function() {
+  $(document).ready(function() {
 
-            if(!window.statsSource){window.statsSource=new EventSource("/api/live_stats");}
-            statsSource.addEventListener('message', function (e) {
-              var stats = JSON.parse(e.data);
-              for (algo in stats.algos) {
-                $('#statsMiners' + algo).text(stats.algos[algo].workers);
-                $('#statsHashrate' + algo).text(stats.algos[algo].hashrateString);
-              }
-              for (var pool in stats.pools) {
-                $('#statsMiners' + pool).text(stats.pools[pool].workerCount);
-                $('#statsHashrate' + pool).text(stats.pools[pool].hashrateString);
-              }
-            });
-          });
-        </script>
+    if(!window.statsSource){window.statsSource=new EventSource("/api/live_stats");}
+    statsSource.addEventListener('message', function (e) {
+      var stats = JSON.parse(e.data);
+      for (algo in stats.algos) {
+        $('#statsMiners' + algo).text(stats.algos[algo].workers);
+        $('#statsHashrate' + algo).text(stats.algos[algo].hashrateString);
+      }
+      for (var pool in stats.pools) {
+        $('#statsMiners' + pool).text(stats.pools[pool].workerCount);
+        $('#statsHashrate' + pool).text(stats.pools[pool].hashrateString);
+      }
+    });
+  });
+  </script>

@@ -75,6 +75,7 @@ function buildChartData() {
     i++;
   }
 }
+
 function updateChartData() {
   var workers = {};
   for (var w in statData.history) {
@@ -329,7 +330,6 @@ function paymentList() {
   $("span#ZCLMined").text(ZCLMined);
   $("span#BTCPNow").text((BTCPOwed).toFixed(4));
 }
-
 
 function rebuildWorkerDisplay() {
   $("#boxesWorkers").html("");
